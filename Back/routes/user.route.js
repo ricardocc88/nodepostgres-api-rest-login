@@ -3,7 +3,7 @@ import { UserController } from "../controllers/user.controller.js"
 import { verifyToken } from "../middlewares/jwt.middleware.js";
 
 const router = Router()
-
+//configuracion de rutas
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.get('/profile', verifyToken, UserController.profile);
