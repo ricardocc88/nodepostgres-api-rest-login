@@ -13,12 +13,14 @@ export const verifyToken = (req, res, netx) => {
     
     token = token.split(" ")[1]
     console.log({token})
-    
     try {
-        // jwt.verify(token)
+        const {email} = jwt.verify(token, process.env.JWT_SECRET)
+        console.log(email)
+        req.email = email
         netx()
     } catch (error) {
-        
+        console.log(error)
+        return res.status(400).json({ error: "Token Invalido"})
     }
    
 }
